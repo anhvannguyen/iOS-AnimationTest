@@ -4,7 +4,7 @@
 //
 //  Created by Anh Nguyen on 10/26/12.
 //  Copyright (c) 2012 Redshift Interactive. All rights reserved.
-//
+//  
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"

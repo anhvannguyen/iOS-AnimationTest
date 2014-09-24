@@ -10,9 +10,11 @@
 
 @implementation CCAnimation (Helper)
 
-// Generate an animation using a series of files.
+// Generate an animation using a series of files with consistant filenames
 // example: image-01.png, image-02.png, image-03.png, etc
-+(CCAnimation *) animationWithFile:(NSString *)name frameCount:(int)frameCount delay:(float)delay
++(CCAnimation *) animationWithFile:(NSString *)name     // the name of the files ex: "image-"
+                        frameCount:(int)frameCount      // the number of images to make the animation
+                             delay:(float)delay         // the time delay between each frame animation
 {
 	// load the animation frames as textures and create the sprite frames
 	NSMutableArray *frames = [NSMutableArray arrayWithCapacity:frameCount];
@@ -36,7 +38,10 @@
 
 // Generate an animation using a an existing animation sheet and plist using Zwoptex, Texture Packer,
 // or a Texture Atlus type image package tool
-+(CCAnimation *) animationWithFrame:(NSString *)frameName animationName:(NSString *)animationName frameCount:(int)frameCount delay:(float)delay
++(CCAnimation *) animationWithFrame:(NSString *)frameName       // the name of the sprite sheet .plist file
+                      animationName:(NSString *)animationName   // the name of the animation within the texture
+                         frameCount:(int)frameCount             // the number of images to make the animation
+                              delay:(float)delay                // the time delay between each frame animation
 {
     // load the animation frames as textures and create a sprite frame
 	NSMutableArray *frames = [NSMutableArray arrayWithCapacity:frameCount];
@@ -58,7 +63,13 @@
 // example: 1 | 2 | 3 | 4   Image are even spaced in size.
 //          -------------   Use, width: 4, height: 2, count: 8 for this example
 //          5 | 6 | 7 | 8
-+(CCAnimation *) animationWithSpriteSheet:(NSString *)fileName frameCount:(int)frameCount frameCountWidth:(int)frameCountWidth frameCountHeight:(int)frameCountHeight frameWidth:(int)frameWidth frameHeight:(int)frameHeight delay:(float)delay
++(CCAnimation *) animationWithSpriteSheet:(NSString *)fileName    // the name of the sprite sheet file
+                               frameCount:(int)frameCount         // the number of frames in the sprite sheet
+                          frameCountWidth:(int)frameCountWidth    // the number of frames spread out horizontally
+                         frameCountHeight:(int)frameCountHeight   // the number of frames spread out vertically
+                               frameWidth:(int)frameWidth         // the width of each frame in pixels
+                              frameHeight:(int)frameHeight        // the height of each frame in pixels
+                                    delay:(float)delay            // the time delay between each frame animation
 {
     // load the spritesheet file
     CCSprite *animationSprite = [CCSprite spriteWithFile:fileName];
@@ -97,10 +108,10 @@
 }
 
 // Generate animation based on frame numbers to allow for reuse of image
-+(CCAnimation *) animationWithFrame:(NSString *)frameName
-                      animationName:(NSString *)animationName
-                           frameSet:(NSArray *)frameSet
-                              delay:(float)delay
++(CCAnimation *) animationWithFrame:(NSString *)frameName       // the name of the sprite sheet .plist file
+                      animationName:(NSString *)animationName   // the name of the animation within the texture
+                           frameSet:(NSArray *)frameSet         // number array of the order to run the frames
+                              delay:(float)delay                // the time delay between each frame animation
 {
     // load the animation frames as textures and create a sprite frame
 	NSMutableArray *frames = [NSMutableArray arrayWithCapacity:[frameSet count]];
