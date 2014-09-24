@@ -3,7 +3,7 @@
 //  AnimationTester
 //
 //  Created by Anh Nguyen on 1/16/13.
-//  Copyright Redshift Interactive 2013. All rights reserved.
+// 
 //
 
 
