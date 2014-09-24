@@ -47,6 +47,7 @@
         // Get the window size
         CGSize winSize = [[CCDirector sharedDirector] winSize];
         [CCMenuItemFont setFontName:@"Verdana"];
+        [CCMenuItemFont setFontSize:18];
         
         // Create the buttons
         CCMenuItem *idleButton = [CCMenuItemFont itemWithString:@"Super" target:self selector:@selector(playSuper)];
@@ -54,15 +55,15 @@
         CCMenuItem *attackButton = [CCMenuItemFont itemWithString:@"Attack" target:self selector:@selector(playAttack)];
         // Create the menu and add the buttons to the menu
         CCMenu *menu = [CCMenu menuWithItems:idleButton, victoryButton, attackButton, nil];
-        [menu alignItemsHorizontallyWithPadding:50];
+        [menu alignItemsHorizontallyWithPadding:20];
         [menu setPosition:ccp(menu.contentSize.width/2, victoryButton.contentSize.height + 50)];
         [self addChild:menu];
         
         // Create the attack number buttoms
         attackCount = 1;
-        attackCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", attackCount] dimensions:CGSizeMake(40, 35) hAlignment:kCCTextAlignmentCenter fontName:@"Verdana" fontSize:30];
+        attackCountLabel = [CCLabelTTF labelWithString:[NSString stringWithFormat:@"%i", attackCount] dimensions:CGSizeMake(40, 35) hAlignment:kCCTextAlignmentCenter fontName:@"Verdana" fontSize:20];
         attackCountLabel.color = ccRED;
-        attackCountLabel.position = ccp(winSize.width/2 + 250, victoryButton.contentSize.height + 50);
+        attackCountLabel.position = ccp(winSize.width/2 + 152, victoryButton.contentSize.height + 45);
         [self addChild:attackCountLabel];
         
         CCMenuItem *decrementCounter = [CCMenuItemFont itemWithString:@"-" block:^(id sender) {
@@ -76,15 +77,15 @@
             [attackCountLabel setString:[NSString stringWithFormat:@"%i", attackCount]];
         }];
         CCMenu *counterMenu = [CCMenu menuWithItems:decrementCounter, incrementCounter, nil];
-        [counterMenu alignItemsHorizontallyWithPadding:40];
-        [counterMenu setPosition:ccp(menu.contentSize.width/2 + 255, victoryButton.contentSize.height + 50)];
+        [counterMenu alignItemsHorizontallyWithPadding:35];
+        [counterMenu setPosition:ccp(menu.contentSize.width/2 + 155, victoryButton.contentSize.height + 50)];
         [self addChild:counterMenu];
         
         // Load in the image texture and use a region of the image as our initial image 
         [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile:@"ken-puzzle.plist"];
         player = [[Character alloc] initWithSpriteFrameName:@"ken-puzzle-idle-01.png"];
         player.position = ccp(winSize.width/2, winSize.height/2);
-        //player.scale = 2;
+        player.scale = 2;
         [self addChild:player];
         
         
